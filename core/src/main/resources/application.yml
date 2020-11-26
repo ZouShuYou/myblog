@@ -1,0 +1,44 @@
+server:
+  port: 8099
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+  connection-timeout: 5000ms
+  servlet:
+    context-path: /blog
+
+
+
+spring:
+  application:
+    name: myblog
+  profiles:
+    active: dev
+  jackson:
+    serialization:
+      write-dates-as-timestamps: true
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+  mvc:
+    throw-exception-if-no-handler-found: true
+    static-path-pattern: /static/**
+  resources:
+    add-mappings: false
+
+
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+  type-aliases-package: com.zsy.blog.entity
+  global-config:
+    db-config:
+      id-type: auto
+      field-strategy: not_empty
+
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+
