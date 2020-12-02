@@ -7,6 +7,7 @@
     <modules>
         <module>core</module>
         <module>auth</module>
+        <module>manage</module>
     </modules>
 
 

@@ -2,6 +2,7 @@ package com.zsy.auth.service.impl;
 
 import com.zsy.auth.service.ShiroService;
 import com.zsy.auth.service.SysUserTokenService;
+import com.zsy.blog.common.constants.RedisKeyConstants;
 import com.zsy.blog.common.constants.SysConstants;
 import com.zsy.blog.entity.sys.SysMenu;
 import com.zsy.blog.entity.sys.SysUser;
@@ -54,17 +55,17 @@ public class ShiroServiceImpl implements ShiroService {
 
     @Override
     public SysUserToken queryByToken(String token) {
+        return sysUserTokenService.queryByToken(RedisKeyConstants.MANAGE_SYS_USER_TOKEN+token);
 
-        return null;
     }
 
     @Override
     public SysUser queryUser(Integer userId) {
-        return null;
+        return sysUserMapper.selectById(userId);
     }
 
     @Override
     public void refreshToken(Integer userId, String accessToken) {
-
+        sysUserTokenService.refreshToken(userId,accessToken);
     }
 }
